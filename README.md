@@ -13,7 +13,7 @@ Ce projet est un **forum avancé** développé en **Go**, intégrant des fonctio
 
 ## Technologies utilisées
 - **Langage** : Go
-- **Base de données** : PostgreSQL / MySQL
+- **Base de données** : SQLite
 - **Authentification** : OAuth (Google, GitHub)
 - **Sécurité** : HTTPS, chiffrement, UUID pour les sessions
 - **Tests** : Unitaires pour garantir la robustesse du projet

@@ -1,0 +1,441 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+  background-color: #000000;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Header and Navigation */
+.container-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  background-color: #000000;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  border: 3px solid #fff8f8;
+}
+
+.logof {
+  color: #ffffff;
+  font-size: 35px;
+  font-weight: 600;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+/* Login and Register Buttons */
+.button-connection {
+  margin-left: auto;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-btn,
+.register-btn {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
+/* Sidebar Menu */
+.menud {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.menud a {
+  margin: 2px 0;
+  padding: 5px;
+  background: none;
+  border: none;
+}
+
+.menud img {
+  width: 48px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.menud img:hover {
+  opacity: 0.8;
+}
+
+/* Main Content Container */
+.allpost-container {
+  margin: auto;
+  margin-top: 10%;
+  width: 60%;
+  height: 88vh;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  box-sizing: border-box;
+}
+
+.allpost-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Post Container */
+.container-post {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Post Header */
+.head-post {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid hsl(0, 0%, 100%);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info p {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.info p:hover {
+  text-decoration: underline;
+}
+
+/* Profile Picture */
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Menu Dot Image */
+.menu-dotimg {
+  width: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.menu-dotimg:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+
+/* Post Body */
+.body-post {
+  padding: 5%;
+  padding-top: 20%; /* Adjust this value based on .head-post height */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.content p {
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.image {
+  margin-top: 5%;
+  margin-bottom: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+.image img {
+  width: 20%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+/* Like/Dislike/Comment Section */
+.container-like {
+  margin-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.like,
+.dislike,
+.comment {
+  display: flex;
+  align-items: center;
+}
+
+.like span,
+.dislike span {
+  margin-left: 5px;
+  color: #ffffff;
+}
+
+
+button.like-btn,
+button.dislike-btn { /* Updated selectors */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+button.like:hover img,
+button.dislike:hover img,
+.comment a:hover img {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+}
+
+.like img,
+.dislike img,
+.comment img {
+  width: 24px;
+}
+
+.comment a {
+  display: flex;
+  align-items: center;
+}
+
+.comment a img {
+  width: 24px;
+}
+
+/* Comments Section */
+.comment-section {
+  width: 100%;
+  height: 20%;
+  margin-top: 10px;
+  padding: 10px;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Comment Item */
+.comment-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Comment Header */
+.comment-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.comment-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-username {
+  color: white;
+  font-weight: bold;
+}
+
+.comment-date {
+  font-size: 0.9em;
+  color: gray;
+}
+
+.comment-menudot {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  cursor: pointer;
+  margin-right: 1%;
+}
+
+/* Comment Content */
+.comment-content {
+  margin: 10px 0;
+  color: white;
+}
+
+/* Comment Actions */
+.comment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.comment-like-button img,
+.comment-dislike-button img {
+  width: 20px;
+}
+
+.comment-like-button img:hover,
+.comment-dislike-button img:hover {
+  padding: 10%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  transform: scale(1.1);
+}
+
+/* Comment Input */
+.comment-input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.comment-input input[type="text"] {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: transparent;
+  transition: border-color 0.3s;
+}
+
+.comment-input input[type="text"]:focus {
+  border-color: #ffffff;
+  outline: none;
+}
+
+.comment-input .comment-button {
+  margin-left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-input .comment-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.comment-input .comment-button:active {
+  background-color: #ffffff;
+}
+
+/* No Comments Message */
+.comment-no-comments {
+  color: white;
+}
+
+
+/* categories.css */
+
+/* Container for the categories */
+.post-categories {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Individual category badge */
+.category {
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text */
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/* Optional: Hover effect for categories */
+.category:hover {
+  background-color: #e0e0e0;
+  cursor: default;
+}

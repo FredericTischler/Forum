@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/register.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="logo">
+        <a href="/home" class="logof">f.</a> <!-- Updated href to link to home -->
+    </div>
+    <div class="login-box">
+        <form action="/register" method="POST">
+        <div class="login-header">
+            <header>Register</header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" id="email" name="email" placeholder="Entrez votre e-mail" required>
+
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" id="username" name="username" placeholder="Choisissez un pseudo" required>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" id="password" name="password" placeholder="Choisissez un mot de passe" required>
+        </div>
+        <div class="input-submit">
+            <input type="submit" class="submit-btn" id="submit" value="Register">
+        </div>
+        <div class="auth">
+            <a href="/login-google" class="oauth-btn google-btn">
+                <img src="/static/images/google.png" alt="Google">
+                <span>Register with Google</span>
+            </a>
+            
+            <a href="/login-github" class="oauth-btn github-btn">
+                <img src="/static/images/github.webp" alt="GitHub">
+                <span>Register with GitHub</span>
+            </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

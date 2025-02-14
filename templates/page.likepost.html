@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Like</title>
+    <link rel="stylesheet" href="/static/home.css">
+</head>
+<body>
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a> <!-- Updated href to link to home -->
+        </div>
+        <div class="button-connection">
+            {{ if .username}}
+            <a href="/logout" class="login-btn">Log Out</a>
+            {{ else }}
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="register-btn">Register</a>
+            {{ end }}
+        </div>
+    </div>
+    <div class="menud">
+            <a href="/home"><img src="/static/images/houseplein.png" alt="home"></a>
+            {{if .username}}
+            <a href="/post/create"><img src="/static/images/squareplein.png" alt="createpost"></a>
+            {{ end }}
+    </div>
+
+    <div class="allpost-container">
+        {{range .posts}}
+        <div class="container-post">
+            <div class="head-post">
+                <div class="info">
+                    <a href="/profile/{{.UserID.Username}}" class="profile-picture">
+                        <img src="/static/images_profile/{{.UserID.Picture}}" alt="{{.UserID.Picture}}">
+                    </a>
+                    <a href="/profile/{{.UserID.Username}}" class="profile-name">
+                        <p>{{.UserID.Username}}</p>
+                    </a>
+                </div>
+                {{if eq .UserID.Username $.username}}
+                <div class="menudot">
+                    <a href="/post/edit/{{.ID}}"><img class="menu-dotimg" src="/static/images/menu-dots.png" alt="menudot"></a>
+                </div>
+                {{end}}
+            </div>
+            <div class="body-post">
+                <div class="title">
+                    <h4>{{.Title}}</h4>
+                </div>
+                <div class="content">
+                    <p>{{.Content}}</p>
+                </div>
+                {{if .Image}}
+                <div class="image">
+                    <img src="/static/images_post/{{.Image}}" alt="{{.Image}}">
+                </div>
+                {{end}}
+
+                <!-- Categories Display -->
+                <div class="post-categories">
+                    {{range .Category}}
+                        <span class="category">{{.Name}}</span>
+                    {{end}}
+                </div>
+
+                <div class="container-like">
+                    {{if $.username}}
+                    <div class="like">
+                        <form action="/post/likepostlike/{{.ID}}" method="post">
+                            <input type="hidden" name="action" value="like">
+                            <button type="submit" class="like-btn"> <!-- Updated class -->
+                                {{if eq .UserAction "like"}}
+                                    <img src="/static/images/heartplein.png" alt="like">
+                                {{else}}
+                                    <img src="/static/images/heart.png" alt="like">
+                                {{end}}
+                            </button>
+                        </form>
+                        <span>{{.LikeCount}}</span>
+                    </div>
+                    <div class="dislike">
+                        <form action="/post/likepostlike/{{.ID}}" method="post">
+                            <input type="hidden" name="action" value="dislike">
+                            <button type="submit" class="dislike-btn"> <!-- Updated class -->
+                                {{if eq .UserAction "dislike"}}
+                                    <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                {{else}}
+                                    <img src="/static/images/heart-slash.png" alt="dislike">
+                                {{end}}
+                            </button>
+                        </form>
+                        <span>{{.DislikeCount}}</span>
+                    </div>
+                    {{end}}
+                    <div class="comment">
+                        <a href="/post/direct/{{.ID}}">
+                            <img src="/static/images/comment.png" alt="comment">
+                        </a>
+                    </div>
+                </div>
+            </div>   
+        </div>
+        {{end}}
+    </div>
+    
+</body>
+</html>

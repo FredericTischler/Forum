@@ -1,0 +1,16 @@
+.categoryname {
+    text-align: center; /* Centre le texte horizontalement */
+    margin-bottom: 2%;
+    
+}
+
+/* Style spécifique pour le titre h2 dans la section */
+.categoryname h2 {
+    font-family: 'Roboto', sans-serif; /* Police moderne et lisible */
+    font-size: 2em; /* Taille de police agrandie pour une meilleure visibilité */
+    color: white; /* Couleur du texte principale */
+    text-transform: capitalize; /* Met la première lettre de chaque mot en majuscule */
+    letter-spacing: 1px; /* Espacement des lettres pour une meilleure lisibilité */
+    transition: color 0.3s ease; /* Transition douce pour les changements de couleur */
+}
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.post.Title}}</title>
+    <link rel="stylesheet" href="/static/post.css">
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a>
+        </div>
+        <div class="button-connection">
+            {{ if .username }}
+            <a href="/logout" class="login-btn">Log Out</a>
+            {{ else }}
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="register-btn">Register</a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Menu latéral -->
+    <div class="menud">
+        <a href="/home"><img src="/static/images/houseplein.png" alt="home"></a>
+        {{ if .username }}
+        <a href="/post/create"><img src="/static/images/squareplein.png" alt="createpost"></a>
+        {{ end }}
+    </div>
+
+    <!-- Post -->
+    <div class="allpost-container">
+        <div class="container-post">
+            <div class="head-post">
+                <div class="info">
+                    <a href="/profile/{{.post.UserID.Username}}" class="profile-picture">
+                        <img src="/static/images_profile/{{.post.UserID.Picture}}" alt="{{.post.UserID.Picture}}">
+                    </a>
+                    <a href="/profile/{{.post.UserID.Username}}" class="profile-name">
+                        <p>{{.post.UserID.Username}}</p>
+                    </a>
+                </div>
+                <div class="menudot">
+                    {{ if eq $.Username .post.UserID.Username }}
+                    <a href="/post/edit/{{.PostID.ID}}">
+                        <img class="menu-dotimg" src="/static/images/menu-dots.png" alt="menu-dot">
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="body-post">
+                <div class="title">
+                    <h4>{{.post.Title}}</h4>
+                </div>
+                <div class="content">
+                    <p>{{.post.Content}}</p>
+                </div>
+                {{ if .post.Image }}
+                <div class="image">
+                    <img src="/static/images_post/{{.post.Image}}" alt="{{.post.Image}}">
+                </div>
+                {{ end }}
+                
+                <!-- Categories Display -->
+                <div class="post-categories">
+                    {{range .post.Category}}
+                        <span class="category">{{.Name}}</span>
+                    {{end}}
+                </div>
+                <div class="container-like">
+                    {{ if $.username }}
+                    <!-- Bouton Like -->
+                    <div class="like">
+                        <form action="/post/like/{{.post.ID}}" method="post">
+                            <input type="hidden" name="action" value="like">
+                            <button type="submit" class="like-btn">
+                                {{if eq .post.UserAction "like"}}
+                                    <img src="/static/images/heartplein.png" alt="like">
+                                {{else}}
+                                    <img src="/static/images/heart.png" alt="like">
+                                {{end}}
+                            </button>
+                        </form>
+                        <span>{{.post.LikeCount}}</span>
+                    </div>
+                    <!-- Bouton Dislike -->
+                    <div class="dislike">
+                        <form action="/post/like/{{.post.ID}}" method="post">
+                            <input type="hidden" name="action" value="dislike">
+                            <button type="submit" class="dislike-btn">
+                                {{if eq .post.UserAction "dislike"}}
+                                    <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                {{else}}
+                                    <img src="/static/images/heart-slash.png" alt="dislike">
+                                {{end}}
+                            </button>
+                        </form>
+                        <span>{{.post.DislikeCount}}</span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            <!-- Commentaires -->
+             {{ if .username }}
+            <div class="comment-section">
+                <form action="/post/comment/{{.post.ID}}" method="post">
+                    <div class="comment-input">
+                        <input type="text" name="content" id="comment" placeholder="Commenter..." required>
+                        <button type="submit" class="comment-button">Comment</button>
+                    </div>
+                </form>
+            </div>
+            {{ end }}
+            {{ if .Comments }}
+            {{ range .Comments }}
+            <div class="comment-container">
+                <div class="comment-item">
+                    <div class="comment-header">
+                        <img src="/static/images_profile/{{.UserID.Picture}}" alt="Photo de profil" class="comment-profile-pic">
+                        <div class="comment-info">
+                            <span class="comment-username">{{.UserID.Username}}</span>
+                            <span class="comment-date">{{.CreatedAt.Format "Jan 2, 2006 at 3:04pm"}}</span>               
+                            {{ if eq $.username .UserID.Username }}
+                            <a href="/comment/edit/{{.ID}}"><img class="comment-menudot" src="/static/images/menu-dots.png" alt="menu dot"></a>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>{{.Content}}</p>
+                    </div>
+                    <div class="comment-actions">
+                        {{ if $.username }}
+                        <!-- Bouton Like -->
+                        <div class="like">
+                            <form action="/comment/like/{{.ID}}" method="post">
+                                <input type="hidden" name="action" value="like">
+                                <button type="submit" class="like-btn">
+                                    {{if eq .UserAction "like"}}
+                                        <img src="/static/images/heartplein.png" alt="like">
+                                    {{else}}
+                                        <img src="/static/images/heart.png" alt="like">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.LikeCountComment}}</span>
+                        </div>
+                        <!-- Bouton Dislike -->
+                        <div class="dislike">
+                            <form action="/comment/like/{{.ID}}" method="post">
+                                <input type="hidden" name="action" value="dislike">
+                                <button type="submit" class="dislike-btn">
+                                    {{if eq .UserAction "dislike"}}
+                                        <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                    {{else}}
+                                        <img src="/static/images/heart-slash.png" alt="dislike">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.DislikeCountComment}}</span>
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ else }}
+            <p class="pasdecom">Pas encore de commentaires...</p>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>

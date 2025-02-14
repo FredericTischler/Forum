@@ -1,0 +1,182 @@
+/* Styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000000;
+    font-family: 'Poppins',sans-serif;
+}
+
+/* Barre supérieure */
+.container-bar {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000;
+    z-index: 1000;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #000000;
+    border: 3px solid #fff8f8;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
+
+.logof {
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 600;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.button-connection {
+    padding: 10px 20px;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: auto;
+}
+
+.login-btn,
+.register-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 10px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+/* Menu de gauche */
+.menud {
+    position: fixed;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.menud a {
+    background: none;
+    border: none;
+    margin: 2px 0;
+    padding: 5px;
+}
+
+.menud img {
+    width: 48px;
+    height: auto;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.menud img:hover {
+    opacity: 0.8;
+}
+
+.allpost-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    margin-top: 6%;
+    width: 60%;
+    height: 88vh;
+    overflow-y: auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+    overflow-y: scroll;
+  }
+  .allpost-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+.container-post {
+    position: relative; /* Assure que .head-post se positionne par rapport à .container-post */
+    border: 1px solid hsl(0, 0%, 100%);
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+/* Formulaire de création de post */
+.container-post form {
+    width: 100%;
+    padding: 5%;
+}
+
+.title h2,
+.label {
+    color: #ffffff;
+    margin-bottom: 15px; /* Augmente la marge entre le titre et les zones de texte */
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Augmente la marge entre les champs */
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    background-color: #000;
+    color: #ffffff;
+}
+
+textarea {
+    height: 150px;
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+button[type="submit"] {
+    width: 80%; /* Augmente la largeur du bouton */
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 20px auto 0; /* Centre le bouton horizontalement et ajoute de la marge en haut */
+    display: block;
+    text-align: center;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+.label {
+    margin-bottom: 10px;
+}

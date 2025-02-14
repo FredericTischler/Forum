@@ -1,0 +1,67 @@
+.notification-btn {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.notification-btn img {
+    width: 24px; /* Ajuste la taille de l'icône */
+    height: 24px;
+    object-fit: contain;
+}
+
+.notification-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.1); /* Ajout d'un effet au survol */
+}
+
+.notification-btn:focus {
+    outline: 2px solid white; /* Contour visible pour l'accessibilité */
+    outline-offset: 4px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center; /* Centre verticalement les éléments */
+    gap: 10px; /* Espacement entre les éléments */
+}
+
+.profile-info-btn {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 50%; /* Pour un bouton circulaire */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.profile-info-btn img {
+    width: 24px; /* Ajuste la taille de l'icône */
+    height: 24px;
+    object-fit: contain; /* Garde les proportions de l'image */
+}
+
+.profile-info-btn:hover {
+    transform: scale(1.1); /* Effet d'agrandissement au survol */
+    background-color: rgba(0, 0, 0, 0.1); /* Ajout d'une couleur de fond subtile */
+}
+
+.profile-info-btn:focus {
+    outline: 2px solid white; /* Contour visible pour accessibilité */
+    outline-offset: 4px;
+}
+
+.notification-user-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,97 @@
+/* Conteneur principal des notifications */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    margin-top: 10%;
+    width: 60%;
+    height: 88vh;
+    padding: 20px 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* Barre de défilement pour le conteneur */
+    color: white; /* Texte blanc */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+/* Liste des notifications */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacement entre les notifications */
+    width: 100%; /* S'étend sur toute la largeur */
+}
+
+/* Chaque notification */
+.notification-item {
+    padding: 15px;
+    border: 1px solid #444; /* Bordure subtile grise */
+    border-radius: 8px; /* Coins arrondis */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    color: white; /* Texte blanc */
+}
+
+/* Effet au survol */
+.notification-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Légère élévation */
+}
+
+/* Liens dans les notifications */
+.notification-link {
+    text-decoration: none;
+    color: #ffffff; /* Bleu clair pour les liens */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.notification-link:hover {
+    color: #ffffff; /* Bleu plus vif au survol */
+    text-decoration: underline;
+}
+
+/* En-tête de chaque notification */
+.notification-header {
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    margin-bottom: 10px; /* Espacement en bas */
+}
+
+/* Image de profil dans les notifications */
+.notification-user-picture {
+    width: 50px; /* Taille plus grande pour plus de visibilité */
+    height: 50px;
+    border-radius: 50%; /* Image circulaire */
+    margin-right: 15px; /* Espacement avec le texte */
+    border: 2px solid white; /* Bordure blanche autour de l'image */
+    object-fit: cover; /* Garde l'image bien proportionnée */
+}
+
+/* Titre des notifications */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffffff; /* Texte blanc */
+    border-bottom: 2px solid #444; /* Ligne sous le titre */
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+/* Scroll personnalisé */
+.info-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.info-container::-webkit-scrollbar-thumb {
+    background-color: #555; /* Couleur de la barre */
+    border-radius: 4px;
+}
+
+.info-container::-webkit-scrollbar-track {
+    background: #121212; /* Couleur de fond */
+}
+
+.notification-header a {
+    color: white;
+    text-decoration: none;
+}

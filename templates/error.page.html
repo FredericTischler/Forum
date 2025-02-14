@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <style>
+        /* Styles de base */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #e1d7d8;
+            height: 100vh;
+        }
+
+        /* Barre supÃ©rieure avec logo */
+        .container-bar {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #000000;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 30px;
+            color: #ffffff;
+            font-weight: bold;
+            border: 3px solid white;
+        }
+
+        .logo a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Conteneur d'erreur */
+        .error-container {
+            margin-top: 50px;
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            background-color: #252525;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .error-container h1 {
+            font-size: 80px;
+            color: #ff6b6b;
+            margin: 0;
+            animation: pulse 1.5s infinite;
+        }
+
+        .error-container p {
+            font-size: 20px;
+            color: #c4c4c4;
+            margin: 10px 0 20px;
+        }
+
+        .error-container a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #ff6b6b;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .error-container a:hover {
+            background-color: #ff6b6b;
+            color: #fff;
+        }
+
+        /* Animation de pulsation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Barre avec logo en haut -->
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a> 
+        </div>
+    </div>
+    
+    <!-- Contenu de la page d'erreur -->
+    <div class="error-container">
+        <h1>{{.Code}}</h1>
+        <p>{{.Message}}</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/createpost.css">
+    <!-- Additional CSS for categories -->
+    <style>
+        .categories {
+            margin-bottom: 15px;
+        }
+        .categories label {
+            color: white;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .categories input[type="checkbox"] {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a>
+        </div>
+        <div class="button-connection">
+            <a href="/logout" class="login-btn">Log Out</a>
+        </div>
+    </div>
+
+    <!-- Menu latéral -->
+    <div class="menud">
+        <a href="/home"><img src="/static/images/houseplein.png" alt="home"></a>
+    </div>
+
+    <!-- Formulaire de création de post -->
+    <div class="allpost-container">
+        <div class="container-post">
+            <form action="/post/create" method="POST" enctype="multipart/form-data">
+                <div class="title">
+                    <h2>Create a New Post</h2>
+                </div>
+                <div class="form-group">
+                    <label for="post-title" class="label">Title</label>
+                    <input type="text" id="post-title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-content" class="label">Content</label>
+                    <textarea id="post-content" name="content" required></textarea>
+                </div>
+                <!-- Categories selection -->
+                <div class="form-group categories">
+                    <label class="label">Categories (select up to 2):</label><br>
+                    {{range .categories}}
+                        <label>
+                            <input type="checkbox" name="categories" value="{{.Name}}">{{.Name}}
+                        </label>
+                    {{end}}
+                </div>
+                <div class="form-group">
+                    <label for="post-image" class="label">Image</label>
+                    <input type="file" id="post-image" name="image" accept="image/*">
+                </div>
+                <button type="submit">POST</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+.allcategory {
+    position: fixed;
+    top: 50%; /* Centre verticalement */
+    right: 0; /* Aligne à droite */
+    transform: translateY(-50%); /* Centre réellement au milieu */
+    padding: 10px 20px; /* Espacement interne */
+    border-radius: 8px 0 0 8px; /* Arrondi côté gauche */
+    width: 200px; /* Largeur plus grande */
+    min-height: 400px; /* Hauteur suffisante pour le contenu */
+    display: flex;
+    flex-direction: column;
+    justify-content: top; /* Centre le contenu verticalement */
+    width: 18%;
+    height: 70vh;
+    justify-content: space-between;
+
+}
+
+.categorylist {
+    border: 1px solid white;
+    height: 80px;
+    
+}
+
+.categoryname h2 {
+    border: 1px solid white;
+    margin: 0;
+    padding: 5px 0;
+    text-align: left;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 10px; /* Ajoute un espace entre titre et nombre */
+}
+
+.categorycount {
+
+    margin: 0;
+    padding: 5px 0;
+    text-align: left;
+}
+
+h2 {
+    padding-left: 100;
+}
+
+.categorycount span {
+    font-size: 1em;
+    color: white;
+}
+
+a:visited {
+    color: inherit; /* ou spécifiez une couleur spécifique */
+}

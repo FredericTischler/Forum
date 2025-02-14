@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/notification-bnt.css">
+    <link rel="stylesheet" href="/static/info-notification.css">
+</head>
+<body>
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a>
+        </div>
+        <div class="button-connection">
+            {{ if .username }}
+            <div class="logout-btn">
+                <a href="/profile/{{ .username }}" class="profile-info-btn">
+                    <img src="/static/images/circle-user.png" alt="profile-info-btn">
+                </a>
+                <a href="/notification" class="notification-btn">
+                    <img src="/static/images/bell-notification-social-media-vide.png" alt="notification">
+                </a>
+                <a href="/logout" class="login-btn">Log Out</a>
+            </div>
+            {{ else }}
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="register-btn">Register</a>
+            {{ end }}
+        </div>
+    </div>
+    <div class="menud">
+        <a href="/home"><img src="/static/images/houseplein.png" alt="home"></a>
+        {{ if .username }}
+        <a href="/post/create"><img src="/static/images/squareplein.png" alt="createpost"></a>
+        {{ end }}
+    </div>
+
+    <div class="info-container">
+        <h1>Notifications</h1>
+        <!-- Liste des notifications -->
+        <div class="notifications-list">
+            {{ range .notifications }}
+                <div class="notification-item">
+                    <!-- Ajout de l'image de l'utilisateur -->
+                    <div class="notification-header">
+                        <a href="/profile/{{ .UserId2.Username }}"><img src="static/images_profile/{{ .UserId2.Picture }}" alt="Profile Picture" class="notification-user-picture"></a>
+                        <a href="/profile/{{ .UserId2.Username }}"><strong>{{ .UserId2.Username }}</strong></p></a><p>
+                    </div>
+                    
+                    <!-- Affichage des likes -->
+                    {{ if eq .Type "like" }}
+                    {{ if .Post_Id }}
+                    <a href="/notification/read/{{.Id}}" class="notification-link">
+                        <p>
+                            <strong>{{ .UserId2.Username }}</strong> a aimé votre publication : 
+                            <strong>"{{ .Post_Id.Title }}"</strong>.
+                        </p>
+                    </a>
+                    {{ end }}
+            
+                    <!-- Affichage des commentaires -->
+                    {{ else if eq .Type "comment" }}
+                    {{ if .Comment_Id }}
+                    <a href="/notification/read/{{.Id}}" class="notification-link">
+                        <p>
+                            <strong>{{ .UserId2.Username }}</strong> a commenté votre publication : 
+                            <strong>"{{ .Comment_Id.Content }}"</strong>.
+                        </p>
+                    </a>
+                    {{ end }}
+                    <!-- Affichage des dislikes -->
+                    {{ else if eq .Type "dislike" }}
+                    {{ if .Post_Id }}
+                    <a href="/notification/read/{{.Id}}" class="notification-link">
+                        <p>
+                            <strong>{{ .UserId2.Username }}</strong> n'a pas aimé votre publication : 
+                            <strong>"{{ .Post_Id.Title }}"</strong>.
+                        </p>
+                    </a>
+                    {{ end }}
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Activities</title>
+    <!-- Include your CSS files -->
+    <link rel="stylesheet" href="/static/post.css">
+    <link rel="stylesheet" href="/static/notification-bnt.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a>
+        </div>
+        <div class="button-connection">
+            {{ if .Username }}
+            <div class="logout-btn">
+                <a href="/profile/{{.Username}}" class="profile-info-btn">
+                    <img src="/static/images/circle-user.png" alt="profile-info-btn">
+                </a>
+                <!-- Notification Icon -->
+                <a href="/notification" class="notification-btn">
+                    <img src="/static/images/bell-notification-social-media-vide.png" alt="notification">
+                </a>
+                <a href="/logout" class="login-btn">Log Out</a>
+            </div>
+            {{ else }}
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/register" class="register-btn">Register</a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="menud">
+        <a href="/home"><img src="/static/images/houseplein.png" alt="home"></a>
+        {{ if .Username }}
+        <a href="/post/create"><img src="/static/images/squareplein.png" alt="createpost"></a>
+        {{ end }}
+    </div>
+
+    <!-- Activity Section -->
+    <div class="allpost-container">
+        <div class="activity-section">
+            <h2>Your Activities</h2>
+            {{ range .Activities }}
+            <div class="container-post">
+                <!-- Activity Header -->
+                <div class="head-post">
+                    <div class="info">
+                        <a href="/profile/{{ .PostID.UserID.Username }}" class="profile-picture">
+                            <img src="/static/images_profile/{{ .PostID.UserID.Picture }}" alt="{{ .PostID.UserID.Picture }}">
+                        </a>
+                        <a href="/profile/{{ .PostID.UserID.Username }}" class="profile-name">
+                            <p>{{ .PostID.UserID.Username }}</p>
+                        </a>
+                    </div>
+                    <div class="menudot">
+                        {{ if eq $.Username .PostID.UserID.Username }}
+                        <a href="/post/edit/{{.PostID.ID}}"><img class="menu-dotimg" src="/static/images/menu-dots.png" alt="menu-dot"></a>
+                        {{ end }}
+                    </div>   
+                </div>
+
+                <!-- Activity Content -->
+                <div class="body-post">
+                    {{ if or (eq .ActivityType "like") (eq .ActivityType "dislike") (eq .ActivityType "CreatedPost") }}
+                    <!-- Display Post Information -->
+                    {{ if .PostID }}
+                    <div class="title">
+                        <h4>{{ .PostID.Title }}</h4>
+                    </div>
+                    <div class="content">
+                        <p>{{ .PostID.Content }}</p>
+                    </div>
+                    {{ if .PostID.Image }}
+                    <div class="image">
+                        <img src="/static/images_post/{{ .PostID.Image }}" alt="{{ .PostID.Image }}">
+                    </div>
+                    {{ end }}
+                    <!-- Categories Display -->
+                    <div class="post-categories">
+                        {{range .PostID.Category}}
+                            <span class="category">{{.Name}}</span>
+                        {{end}}
+                    </div>
+                    <div class="container-like">
+                        {{ if $.Username }}
+                        <!-- Like Button -->
+                        <div class="like">
+                            <form action="/post/like/{{.PostID.ID}}" method="post">
+                                <input type="hidden" name="action" value="like">
+                                <button type="submit" class="like-btn">
+                                    {{if eq .PostID.UserAction "like"}}
+                                        <img src="/static/images/heartplein.png" alt="like">
+                                    {{else}}
+                                        <img src="/static/images/heart.png" alt="like">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.PostID.LikeCount}}</span>
+                        </div>
+                        <!-- Dislike Button -->
+                        <div class="dislike">
+                            <form action="/post/like/{{.PostID.ID}}" method="post">
+                                <input type="hidden" name="action" value="dislike">
+                                <button type="submit" class="dislike-btn">
+                                    {{if eq .PostID.UserAction "dislike"}}
+                                        <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                    {{else}}
+                                        <img src="/static/images/heart-slash.png" alt="dislike">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.PostID.DislikeCount}}</span>
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    {{ end }}
+
+                    {{ if eq .ActivityType "comment" }}
+                    <!-- Display Post Information Above the Comment -->
+                    {{ if .CommentID.PostID }}
+                    <div class="title">
+                        <h4>{{ .CommentID.PostID.Title }}</h4>
+                    </div>
+                    <div class="content">
+                        <p>{{ .CommentID.PostID.Content }}</p>
+                    </div>
+                    {{ if .CommentID.PostID.Image }}
+                    <div class="image">
+                        <img src="/static/images_post/{{ .CommentID.PostID.Image }}" alt="{{ .CommentID.PostID.Image }}">
+                    </div>
+                    {{ end }}
+                    <!-- Categories Display -->
+                    <div class="post-categories">
+                        {{range .PostID.Category}}
+                            <span class="category">{{.Name}}</span>
+                        {{end}}
+                    </div>
+                    <div class="container-like">
+                        {{ if $.Username }}
+                        <!-- Like Button -->
+                        <div class="like">
+                            <form action="/post/like/{{.CommentID.PostID.ID}}" method="post">
+                                <input type="hidden" name="action" value="like">
+                                <button type="submit" class="like-btn">
+                                    {{if eq .PostID.UserAction "like"}}
+                                        <img src="/static/images/heartplein.png" alt="like">
+                                    {{else}}
+                                        <img src="/static/images/heart.png" alt="like">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.CommentID.PostID.LikeCount}}</span>
+                        </div>
+                        <!-- Dislike Button -->
+                        <div class="dislike">
+                            <form action="/post/like/{{.CommentID.PostID.ID}}" method="post">
+                                <input type="hidden" name="action" value="dislike">
+                                <button type="submit" class="dislike-btn">
+                                    {{if eq .PostID.UserAction "dislike"}}
+                                        <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                    {{else}}
+                                        <img src="/static/images/heart-slash.png" alt="dislike">
+                                    {{end}}
+                                </button>
+                            </form>
+                            <span>{{.CommentID.PostID.DislikeCount}}</span>
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+
+                    <!-- Display Comment Information Below the Post -->
+                    {{ if .CommentID }}
+                    <div class="comment-container">
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <img src="/static/images_profile/{{.CommentID.UserID.Picture}}" alt="Photo de profil" class="comment-profile-pic">
+                                <div class="comment-info">
+                                    <span class="comment-username">{{.CommentID.UserID.Username}}</span>
+                                    <span class="comment-date">{{.CommentID.CreatedAt.Format "Jan 2, 2006 at 3:04pm"}}</span>
+                                    {{ if eq $.Username .CommentID.UserID.Username }}
+                                    <a href="/comment/edit/{{.CommentID.ID}}"><img class="comment-menudot" src="/static/images/menu-dots.png" alt="menu dot"></a>
+                                    {{ end }}
+                                </div>
+                            </div>
+                            <div class="comment-content">
+                                <p>{{ .CommentID.Content }}</p>
+                            </div>
+                            <div class="comment-actions">
+                                {{ if $.Username }}
+                                <!-- Like Button -->
+                                <div class="like">
+                                    <form action="/comment/like/{{.CommentID.ID}}" method="post">
+                                        <input type="hidden" name="action" value="like">
+                                        <button type="submit" class="like-btn">
+                                            {{if eq .CommentID.UserAction "like"}}
+                                                <img src="/static/images/heartplein.png" alt="like">
+                                            {{else}}
+                                                <img src="/static/images/heart.png" alt="like">
+                                            {{end}}
+                                        </button>
+                                    </form>
+                                    <span>{{.CommentID.LikeCountComment}}</span>
+                                </div>
+                                <!-- Dislike Button -->
+                                <div class="dislike">
+                                    <form action="/comment/like/{{.CommentID.ID}}" method="post">
+                                        <input type="hidden" name="action" value="dislike">
+                                        <button type="submit" class="dislike-btn">
+                                            {{if eq .CommentID.UserAction "dislike"}}
+                                                <img src="/static/images/heart-slashplein.png" alt="dislike">
+                                            {{else}}
+                                                <img src="/static/images/heart-slash.png" alt="dislike">
+                                            {{end}}
+                                        </button>
+                                    </form>
+                                    <span>{{.CommentID.DislikeCountComment}}</span>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>

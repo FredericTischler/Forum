@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Comment</title>
+    <link rel="stylesheet" href="/static/home.css">
+    <link rel="stylesheet" href="/static/createpost.css">
+    <link rel="stylesheet" href="/static/editpost.css">
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <div class="container-bar">
+        <div class="logo">
+            <a href="/home" class="logof">f.</a>
+        </div>
+        <div class="button-connection">
+            <a href="page.home.html" class="login-btn">Log out</a>
+        </div>
+    </div>
+
+    <!-- Menu latéral -->
+    <div class="menud">
+        <a href="page.home.html"><img src="/static/images/houseplein.png" alt="home"></a>
+    </div>
+
+    <!-- Formulaire de création de post -->
+     <div class="allpost-container">
+    <div class="container-post">
+        <form action="/comment/edit/{{.comment.ID}}" method="POST" enctype="multipart/form-data">
+            <div class="title">
+                <h2>Edit Post</h2>
+            </div>
+            <div class="form-group">
+                <label for="post-content" class="label">Content</label>
+                <textarea id="post-content" name="content" required>{{.comment.Content}}</textarea>
+            </div>
+            <button type="submit">EDIT</button>
+            <a href="/comment/delete/{{.comment.ID}}" class="delete">DELETE</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
